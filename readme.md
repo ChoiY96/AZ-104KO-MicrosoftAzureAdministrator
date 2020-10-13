@@ -1,7 +1,6 @@
-﻿# 출시 예정
-# AZ-104: Microsoft Azure 관리자
+﻿# AZ-104: Microsoft Azure 관리자
 
-- **[연습 링크 (HTML 형식)](https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/)**
+- **[랩 링크(HTML 형식)](https://microsoftlearning.github.io/AZ-104KO-MicrosoftAzureAdministrator/)**
 - **MCT이세요?** - [MCT를 위한 GitHub 사용자 가이드](https://microsoftlearning.github.io/MCT-User-Guide-KO/)를 살펴보세요.
 - **랩 지침을 수동으로 빌드해야 합니까?** - [MicrosoftLearning/Docker-Build](https://github.com/MicrosoftLearning/Docker-Build) 리포지토리에서 지침을 사용할 수 있습니다.
 

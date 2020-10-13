@@ -1,12 +1,14 @@
 ﻿---
 title: 온라인 호스팅 지침
 permalink: index.html
-layout: 홈
+layout: home
 ---
 
 # 콘텐츠 디렉터리
 
-아래에 각 랩 연습과 데모에 대한 하이퍼링크 목록이 나와 있습니다.
+필요한 랩 파일은 [여기에서 다운로드](https://github.com/MicrosoftLearning/AZ-104KO-MicrosoftAzureAdministrator/archive/master.zip)할 수 있습니다.
+
+아래에는 각 랩 연습의 하이퍼링크 목록이 나와 있습니다.
 
 ## 랩
 

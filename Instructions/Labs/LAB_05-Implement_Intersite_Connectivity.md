@@ -46,6 +46,8 @@ Contoso는 보스턴, 뉴욕 및 시애틀 사무소에 광역 네트워크 링�
 
    New-AzResourceGroup -Name $rgName -Location $location
    ```
+   >**참고**: Cloud Shell의 PowerShell 세션에서 Azure 지역을 식별하려면 **(Get-AzLocation).Location**을 실행합니다.
+   
 1. Cloud Shell 창에서 다음을 실행하여 첫 번째 가상 네트워크를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 가상 머신을 배포합니다.
 
    ```pwsh
