@@ -1,8 +1,9 @@
 ﻿# AZ-104: Microsoft Azure 관리자
 
+> **[랩 녹화 및 데모](https://github.com/MicrosoftLearning/Lab-Demo-Recordings) 리포지토리에는 Microsoft 공식 커리큘럼에서 사용된 랩의 비디오에 대한 링크가 있습니다. Microsoft 인증 강사가 포트폴리오에서 사용된 실습 랩의 비음성 버전 녹화본에 쉽게 액세스할 수 있도록 하는 것이 목적입니다.**
+
 - **[랩 링크(HTML 형식)](https://microsoftlearning.github.io/AZ-104KO-MicrosoftAzureAdministrator/)**
 - **MCT이세요?** - [MCT를 위한 GitHub 사용자 가이드](https://microsoftlearning.github.io/MCT-User-Guide-KO/)를 살펴보세요.
-- **랩 지침을 수동으로 빌드해야 합니까?** - [MicrosoftLearning/Docker-Build](https://github.com/MicrosoftLearning/Docker-Build) 리포지토리에서 지침을 사용할 수 있습니다.
 
 ## 무엇을 하고 있나요?
 
