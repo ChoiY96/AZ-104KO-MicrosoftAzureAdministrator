@@ -73,7 +73,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | 가상 노드 | **사용 안 함** |
     | VM Scale Sets | **활성화** |
 	
-1. **다음**을 클릭합니다.** 인증 >**, **Kubernetes 클러스터 만들기** 블레이드의 **인증** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 남겨둡니다).
+1. **다음**을 클릭합니다.**인증 >**, **Kubernetes 클러스터 만들기** 블레이드의 **인증** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 남겨둡니다).
 
     | 설정 | 값 |
     | ---- | ---- |
@@ -103,7 +103,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. 배포 블레이드에서 **리소스로 이동** 링크를 클릭합니다.
 
-1. **설정 ** 섹션의 **az104-9c-aks1** Kubernetes 서비스 블레이드에서 **노드 풀을 클릭합니다**.
+1. **설정** 섹션의 **az104-9c-aks1** Kubernetes 서비스 블레이드에서 **노드 풀을 클릭합니다**.
 
 1. **az104-9c-aks1 - 노드 풀** 블레이드에서 클러스터가 하나의 노드가 있는 단일 풀로 구성되어 있는지 확인합니다.
 
@@ -161,7 +161,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     kubectl get service
     ```
 
-1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>**에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment**에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 참고합니다.
+1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment**에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 참고합니다.
 
 1. 브라우저 창을 열고 이전 단계에서 식별한 IP 주소로 이동합니다. 브라우저 페이지에 **nginx에 오신 것을 환영합니다!** 메시지가 표시되는지 확인합니다.
 
