@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '09c - Azure Kubernetes Service 구현'
     module: '모듈 09 - 서버리스 컴퓨팅'
@@ -52,7 +52,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 이 작업에서는 Azure Portal을 사용하여 Azure Kubernetes 서비스 클러스터를 배포합니다.
 
-1. Azure Portal에서 **Kubernetes 서비스**를 검색하여 찾고 **Kubernetes 서비스** 블레이드에서 **+ 추가**를 클릭합니다. 
+1. Azure Portal에서 **Kubernetes 서비스**를 검색하여 찾고 **Kubernetes 서비스** 블레이드에서 **+ 추가**를 클릭하고 **+ Kubernetes 클러스터 추가**를 클릭합니다.
 
 1. **Kubernetes 클러스터 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 남겨둡니다).
 
@@ -85,10 +85,8 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     | 설정 | 값 |
     | ---- | ---- |
-    | 네트워크 구성 | **고급** |
+    | 네트워크 구성 | **kubenet** |
     | DNS 이름 접두사 | 유효하고 전역적으로 고유한 DNS 호스트 이름 |
-    | 부하 분산 장치 | **표준** |
-    | HTTP 애플리케이션 라우팅 | **아니요** |
 
 1. **다음: 통합 >**, **Kubernetes 클러스터 블레이드 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **비활성화**로 설정하고 **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다. 
 

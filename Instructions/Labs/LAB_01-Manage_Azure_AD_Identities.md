@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '01 - Azure Active Directory ID 관리'
     module: '모듈 01 - ID'
@@ -30,6 +30,8 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 #### 작업 1: Azure AD 사용자 생성 및 구성
 
 이 작업에서는 Azure AD 사용자를 만들고 구성합니다.
+
+    >**참고**: 이전에 이 Azure AD 테넌트에서 Azure AD Premium용 평가판 라이선스를 사용하셨다면 새로운 Azure AD 테넌트를 사용하시거나 새로운 Azure AD 테넌트에서 작업 3을 진행한 후 작업 2를 진행하셔야 합니다.
 
 1. Azure Portal에서 **Azure Active Directory**를 검색하고 선택합니다.
 
