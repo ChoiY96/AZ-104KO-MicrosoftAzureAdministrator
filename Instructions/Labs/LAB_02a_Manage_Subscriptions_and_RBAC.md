@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '02a - 구독과 RBAC 관리'
     module: '모듈 02 - 거버넌스 및 규정 준수'
@@ -66,7 +66,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
    {
       "Name": "Support Request Contributor (Custom)",
       "IsCustom": true,
-      "Description": "지원 요청을 만들 수 있습니다",
+      "Description": "Allows to create support requests",
       "Actions": [
           "Microsoft.Resources/subscriptions/resourceGroups/read",
           "Microsoft.Support/*"
