@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '09c - Azure Kubernetes Service 구현'
     module: '모듈 09 - 서버리스 컴퓨팅'
@@ -37,7 +37,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     >**참고**: 처음으로 **Cloud Shell**을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다. 
 
-1. Cloud Shell 창에서 다음 명령을 실행하여 Microsoft.Insights와 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
+1. Cloud Shell 창에서 다음 명령을 실행하여 Microsoft.Kubernetes와 Microsoft.KubernetesConfiguration 리소스 공급자를 등록합니다.
 
    ```pwsh
    Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -66,14 +66,14 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | 노드 크기 | 기본값 수락 |
     | 노드 수 | **1** |
 
-1. **다음: 노드 풀 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **노드 풀** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 노드 풀 >**을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **노드 풀** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | ---- | ---- |
     | 가상 노드 | **사용 안 함** |
     | VM 확장 집합 | **사용** |
 	
-1. **다음: 인증 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **인증** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 인증 >**을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **인증** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | ---- | ---- |
@@ -81,14 +81,14 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | RBAC 사용 | **예** |
 
 
-1. **다음: 네트워킹 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **네트워킹** 탭에서 다음 설정을 지정합니다(다른 설정은 기본 값으로 유지).
+1. **다음: 네트워킹 >**을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **네트워킹** 탭에서 다음 설정을 지정합니다(다른 설정은 기본 값으로 유지).
 
     | 설정 | 값 |
     | ---- | ---- |
     | 네트워크 구성 | **kubenet** |
     | DNS 이름 접두사 | 유효하고 전역적으로 고유한 DNS 호스트 이름 |
 
-1. **다음: 통합 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고 **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다. 
+1. **다음: 통합 >**을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고 **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다. 
 
     >**참고**: 프로덕션 시나리오에서는 모니터링을 활성화하려고 합니다. 이 경우 랩에서 다루지 않으므로 모니터링이 비활성화됩니다. 
 
@@ -107,7 +107,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
-1. **Azure Cloud Shell** 을 **Bash**(검은색 배경)로 전환합니다.
+1. **Azure Cloud Shell**을 **Bash**(검은색 배경)로 전환합니다.
 
 1. Cloud Shell 창에서 다음 명령을 실행하여 AKS 클러스터에 액세스할 때 필요한 자격 증명을 검색하세요.
 
@@ -159,7 +159,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     kubectl get service
     ```
 
-1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment** 에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 기록합니다.
+1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment**에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 기록합니다.
 
 1. 브라우저 창을 열고 이전 단계에서 식별한 IP 주소로 이동합니다. 브라우저 페이지에 **nginx에 오신 것을 환영합니다!** 메시지가 표시되는지 확인합니다.
 
@@ -173,7 +173,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     kubectl scale --replicas=2 deployment/nginx-deployment
     ```
 
-1. **Cloud Shell** 창에서 다음 명령을 실행하여 배포가 잘 확장되었는지 확인합니다.
+1. **Cloud Shell** 창에서 다음 명령을 실행하여 배포가 잘 스케일링되었는지 확인합니다.
 
     ```sh
     kubectl get pods
@@ -187,7 +187,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     az aks scale --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER --node-count 2
     ```
 
-    > **참고**: 추가 노드의 프로비전이 완료될 때까지 기다립니다. 약 3분 정도 소요됩니다. 실패한 경우 `az aks scale` 명령을 다시 실행합니다.
+    > **참고**: 추가 노드의 프로비전이 완료될 때까지 기다립니다. 완료되려면 약 3분이 소요됩니다. 실패한 경우 `az aks scale` 명령을 다시 실행합니다.
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 클러스터 스케일링이 잘 수행되었는지 확인합니다.
 
