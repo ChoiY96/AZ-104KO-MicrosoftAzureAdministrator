@@ -31,7 +31,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 
 이 작업에서는 Azure AD 사용자를 만들고 구성합니다.
 
-    >**참고**: 이전에 이 Azure AD 테넌트에서 Azure AD Premium용 평가판 라이선스를 사용했다면 새 Azure AD 테넌트를 만들거나, 새 Azure AD 테넌트에서 작업 3->작업 2를 차례로 수행해야 합니다.
+    > **참고**: 이전에 이 Azure AD 테넌트에서 Azure AD Premium용 평가판 라이선스를 사용했다면 새 Azure AD 테넌트를 만들거나, 새 Azure AD 테넌트에서 작업 3->작업 2를 차례로 수행해야 합니다.
 
 1. Azure Portal에서 **Azure Active Directory**를 검색하고 선택합니다.
 
@@ -193,7 +193,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 
 1. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다.
 
-1. **새 디렉터리로 이동하려면 여기를 클릭**을 사용하여 새로 만든 Azure AD 테넌트의 블레이드를 표시** **Azure Portal 도구 모음의 **Contoso 랩** 링크 또는 **디렉터리 + 구독** 단추(Cloud Shell 단추의 바로 오른쪽).
+1. **새 디렉터리로 이동하려면 여기를 클릭** 을 사용하여 새로 만든 Azure AD 테넌트의 블레이드를 표시 Azure Portal 도구 모음의 **Contoso 랩** 링크 또는 **디렉터리 + 구독** 단추(Cloud Shell 단추의 바로 오른쪽).
 
 #### 작업 4: Azure AD 게스트 사용자 관리.
 
