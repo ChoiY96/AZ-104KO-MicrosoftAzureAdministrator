@@ -7,6 +7,10 @@ lab:
 # 랩 02a - 구독 및 RBAC 관리
 # 학생 랩 매뉴얼
 
+## 랩 요구 사항:
+
+이 랩에서는 Azure Active Directory(Azure AD) 사용자를 만들고, 사용자 지정 Azure RBAC(역할 기반 액세스 제어) 역할을 만들고, 해당 역할을 Azure AD 사용자에게 할당하기 위한 사용 권한이 필요합니다. 모든 랩 호스터가 이 기능을 제공하는 것은 아닙니다. 이 랩에서 사용 가능한지 강사에게 물어보세요.
+
 ## 랩 시나리오
 
 Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구현하는 작업을 부여받았습니다.
@@ -23,7 +27,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 이 랩에서는 다음 작업을 수행합니다.
 
 + 작업 1: 관리 그룹 구현
-+ 작업 2: 사용자 지정 RBAC 역할 만들기 
++ 작업 2: 사용자 지정 RBAC 역할을 만들기 
 + 작업 3: RBAC 역할 할당
 
 
@@ -66,7 +70,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
    {
       "Name": "Support Request Contributor (Custom)",
       "IsCustom": true,
-      "Description": "지원 요청을 만들 수 있습니다",
+      "Description": "Allows to create support requests",
       "Actions": [
           "Microsoft.Resources/subscriptions/resourceGroups/read",
           "Microsoft.Support/*"
@@ -84,15 +88,15 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. Azure Portal에서 검색 텍스트 상자 오른쪽에 있는 도구 모음 아이콘을 클릭하여 **Cloud Shell** 창을 엽니다.
 
-1. **Bash** 또는 **PowerShell** 을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다. 
+1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다. 
 
     >**참고**: 처음으로 **Cloud Shell**을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다. 
 
-1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\02\\az104-02a-customRoleDefinition.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
+1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\02\\az104-02a-customRoleDefinition.json** 을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Cloud Shell 창에서 다음 명령을 실행하여 사용자 지정 역할 정의를 만듭니다.
+1. Cloud Shell 창에서 다음을 실행하여 사용자 지정 역할 정의를 만듭니다.
 
-   ```pwsh
+   ```powershell
    New-AzRoleDefinition -InputFile $HOME/az104-02a-customRoleDefinition.json
    ```
 
@@ -113,9 +117,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | 암호를 만들겠습니다. | 사용 |
     | 초기 암호 | **Pa55w.rd124** |
 
-    >**참고**: 전체 **사용자 이름**을 **클립보드에 복사합니다**. 이 랩의 후반부에서 필요합니다.
+    >**참고**: 전체 **사용자 이름**을 **클립보드에 복사합니다**. 이 이름은 이 랩 뒷부분에서 필요합니다.
 
-1. Azure Portal에서 **az104-02-mg1** 관리 그룹으로 돌아가서 해당 **세부 정보** 를 표시합니다.
+1. Azure Portal에서 **az104-02-mg1** 관리 그룹으로 돌아가서 해당 **세부 정보**를 표시합니다.
 
 1. **액세스 제어(IAM)** 를 클릭하고 **역할 할당** 다음에 **+ 추가**를 클릭하고 새로 만든 사용자 계정에 **지원 요청 contributor(사용자 지정)** 역할을 할당합니다.
 
@@ -127,9 +131,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. **InPrivate** 브라우저 창의 Azure Portal에서 **모든 리소스**를 검색하고 선택하여 az104-02-aaduser1 사용자가 리소스를 볼 수 없는지 확인합니다.
 
-1. **InPrivate** 브라우저 창의 Azure Portal에서 **도움말+지원**을 검색하여 선택한 다음 **+새 지원 요청**을 클릭합니다. 
+1. **InPrivate** 브라우저 창의 Azure Portal에서 **도움말+지원**을 검색하여 선택한 다음 **+ 새 지원 요청**을 클릭합니다. 
 
-1. **InPrivate** 브라우저 창에 있는 **도움말+지원 - 새 지원 요청** 블레이드의 **기본** 탭에서 **서비스 및 구독 제한(할당량)** 문제 유형을 선택하고 이 랩에서 사용 중인 구독이 **구독** 드롭다운 목록에 나열되어 있는지 확인합니다.
+1. **InPrivate** 브라우저 창에 있는 **도움말 + 지원 - 새 지원 요청** 블레이드의 **기본** 탭에서 **서비스 및 구독 제한(할당량)** 문제 유형을 선택하고 이 랩에서 사용 중인 구독이 **구독** 드롭다운 목록에 나열되어 있는지 확인합니다.
 
     >**참고**: **구독** 드롭다운 목록에 이 랩에서 사용 중인 구독이 있으면 사용 중인 계정이 구독 전용 지원 요청을 만드는 데 필요한 권한이 있음을 의미합니다.
 
@@ -145,23 +149,23 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. Azure Portal에서 **Azure Active Directory**를 검색하고 선택한 다음 Azure Active Directory 블레이드에서 **사용자**를 클릭합니다.
 
-1. **사용자 - 모든 사용자** 블레이드에서 **az104-02-aaduser1**를 클릭합니다.
+1. **사용자 - 모든 사용자** 블레이드에서 **az104-02-aaduser1** 를 클릭합니다.
 
-1. **az104-02-aaduser1-프로필** 블레이드에서 **개체 ID** 특성의 값을 복사합니다.
+1. **az104-02-aaduser1 - 프로필** 블레이드에서 **개체 ID** 특성의 값을 복사합니다.
 
 1. Azure Portal에서 **Cloud Shell**내의 **PowerShell** 세션을 시작합니다.
 
-1. Cloud Shell 창에서 다음 명령을 실행하여 사용자 지정 역할 정의 할당을 제거합니다(`[object_ID]` 자리 표시자를 이 작업에서 이전에 복사한 **az104-02-aaduser1** Azure Active Directory 사용자 계정의 **개체 ID** 특성 값으로 바꿉니다).
+1. Cloud Shell 창에서 다음을 실행하여 사용자 지정 역할 정의 할당을 제거합니다(`[object_ID]` 자리 표시자를 이 작업에서 이전에 복사한 **az104-02-aaduser1** Azure Active Directory 사용자 계정의 **개체 ID** 특성 값으로 바꿈).
 
-   ```pwsh
+   ```powershell
    $scope = (Get-AzRoleAssignment -RoleDefinitionName 'Support Request Contributor (Custom)').Scope
 
    Remove-AzRoleAssignment -ObjectId '[object_ID]' -RoleDefinitionName 'Support Request Contributor (Custom)' -Scope $scope
    ```
 
-1. Cloud Shell 창에서 다음 명령을 실행하여 사용자 지정 역할 정의를 삭제합니다.
+1. Cloud Shell 창에서 다음을 실행하여 사용자 지정 역할 정의를 삭제합니다.
 
-   ```pwsh
+   ```powershell
    Remove-AzRoleDefinition -Name 'Support Request Contributor (Custom)' -Force
    ```
 
@@ -173,13 +177,13 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. **이동** 블레이드에서 구독이 원래 포함되어 있던 관리 그룹을 선택하고 **저장**을 클릭합니다. 
 
-  >**참고**: 랩 실행 전에 사용자 지정 관리 그룹 계층 구조를 만든 것이 아니라면 이는 **테넌트 루트 관리 그룹**입니다.
+  >**참고**: 이 랩을 실행하기 전에 사용자 지정 그룹 계층 구조를 만들지 않았다면 **테넌트 루트 관리 그룹**입니다.
 
 1. **관리 그룹** 블레이드로 다시 돌아가서 **az104-02-mg1** 관리 그룹의 오른쪽에 있는 **줄임표** 아이콘을 클릭하고 **삭제**를 클릭합니다.
 
-#### 검토
+#### 복습
 
-이 랩에서는 다음을 다루었습니다.
+이 랩에서는 다음을 수행했습니다.
 
 - 관리 그룹을 구현
 - 사용자 지정 RBAC 역할 만들기 

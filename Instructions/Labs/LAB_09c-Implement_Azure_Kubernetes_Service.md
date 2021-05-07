@@ -15,9 +15,10 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 이 랩에서는 다음 작업을 수행합니다.
 
-+ 작업 1: Azure Kubernetes Service 클러스터 배포
-+ 작업 2: Azure Kubernetes Service 클러스터에 Pod 배포
-+ 작업 3: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 스케일링
++ 작업 1: Microsoft.Kubernetes 및 Microsoft.KubernetesConfiguration 리소스 공급자를 등록합니다.
++ 작업 2: Azure Kubernetes Service 클러스터 배포
++ 작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
++ 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
 ## 예상 시간: 40분
 
@@ -33,33 +34,32 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
-1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다. 
+1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
 
-    >**참고**: 처음으로 **Cloud Shell**을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다. 
+    >**참고**: 처음으로 **Cloud Shell**을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
 1. Cloud Shell 창에서 다음 명령을 실행하여 Microsoft.Kubernetes와 Microsoft.KubernetesConfiguration 리소스 공급자를 등록합니다.
 
-   ```pwsh
+   ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
-   
+
    Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
    ```
 
-1. Cloud Shell 창을 닫습니다.   
-
+1. Cloud Shell 창을 닫습니다.
 
 #### 작업 2: Azure Kubernetes Service 클러스터 배포
 
 이 작업에서는 Azure Portal을 사용하여 Azure Kubernetes Service 클러스터를 배포합니다.
 
-1. Azure Portal에서 **Kubernetes 서비스**를 검색하여 찾고 **Kubernetes 서비스** 블레이드에서 **+ 추가**, **+ Kubernetes 클러스터 추가**를 차례로 클릭합니다. 
+1. Azure Portal에서 **Kubernetes 서비스**를 검색하여 찾고 **Kubernetes 서비스** 블레이드에서 **+ 추가**, **+ Kubernetes 클러스터 추가**를 차례로 클릭합니다.
 
 1. **Kubernetes 클러스터 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | ---- | ---- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | 새 리소스 그룹 **az104-09c-rg1**의 이름 |
+    | 리소스 그룹 | 새 리소스 그룹 **az104-09c-rg1** 의 이름 |
     | Kubernetes 클러스터 이름 | **az104-9c-aks1** |
     | 지역 | Kubernetes 클러스터를 프로비전할 수 있는 지역의 이름 |
     | Kubernetes 버전 | 기본값 수락 |
@@ -70,16 +70,15 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     | 설정 | 값 |
     | ---- | ---- |
-    | 가상 노드 | **사용 안 함** |
-    | VM 확장 집합 | **사용** |
-	
+    | 가상 노드 사용 | **사용 안 함**(기본값) |
+    | 가상 머신 확장 집합 사용 | **사용**(기본값) |
+
 1. **다음: 인증 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **인증** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | ---- | ---- |
-    | 서비스 주체 | 기본값 수락 |
-    | RBAC 사용 | **예** |
-
+    | 인증 방법 | **시스템 할당 관리 ID**(기본값) | 
+    | RBAC(역할 기반 액세스 제어) | **사용** |
 
 1. **다음: 네트워킹 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **네트워킹** 탭에서 다음 설정을 지정합니다(다른 설정은 기본 값으로 유지).
 
@@ -88,12 +87,11 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | 네트워크 구성 | **kubenet** |
     | DNS 이름 접두사 | 유효하고 전역적으로 고유한 DNS 호스트 이름 |
 
-1. **다음: 통합 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고 **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다. 
+1. **다음: 통합 >** 을 차례로 클릭합니다. **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고 **검토 + 만들기** 를 클릭한 다음, 유효성 검사를 통과했는지 확인하고 만들기를 클릭합니다.
 
-    >**참고**: 프로덕션 시나리오에서는 모니터링을 활성화하려고 합니다. 이 경우 랩에서 다루지 않으므로 모니터링이 비활성화됩니다. 
+    >**참고**: 프로덕션 시나리오에서는 모니터링을 활성화하려고 합니다. 이 경우 랩에서 다루지 않으므로 모니터링이 비활성화됩니다.
 
     >**참고**: 배포가 완료될 때까지 기다립니다. 약 10분이 소요됩니다.
-
 
 #### 작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
 
@@ -117,7 +115,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     AKS_CLUSTER='az104-9c-aks1'
 
     az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER
-    ``` 
+    ```
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 AKS 클러스터에 연결되었는지 확인하세요.
 
@@ -125,7 +123,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     kubectl get nodes
     ```
 
-1. **Cloud Shell** 창에서 출력을 검토하고 이 시점에 클러스터를 구성하고 있는 하나의 노드가 **준비** 상태를 보고하고 있는지 확인합니다. 
+1. **Cloud Shell** 창에서 출력을 검토하고 이 시점에 클러스터를 구성하고 있는 하나의 노드가 **준비** 상태를 보고하고 있는지 확인합니다.
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 Docker Hub에서 **nginx** 이미지를 배포합니다.
 
@@ -159,17 +157,22 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     kubectl get service
     ```
 
-1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment**에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 기록합니다.
+1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 바뀔 때까지 명령을 다시 실행합니다. **nginx-deployment** 에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 기록합니다.
 
 1. 브라우저 창을 열고 이전 단계에서 식별한 IP 주소로 이동합니다. 브라우저 페이지에 **nginx에 오신 것을 환영합니다!** 메시지가 표시되는지 확인합니다.
 
-#### 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 스케일링
+#### 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
 이 작업에서는 Pod 갯수와 클러스터 노드 갯수를 수평으로 스케일링합니다.
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 Pod 수를 2로 늘려 배포를 스케일링합니다.
 
     ```sh
+
+    RESOURCE_GROUP='az104-09c-rg1'
+
+    AKS_CLUSTER='az104-9c-aks1'
+
     kubectl scale --replicas=2 deployment/nginx-deployment
     ```
 
@@ -199,13 +202,13 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 배포를 스케일링합니다.
 
-    ```
+    ```sh
     kubectl scale --replicas=10 deployment/nginx-deployment
     ```
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 배포가 잘 스케일링되었는지 확인합니다.
 
-    ```
+    ```sh
     kubectl get pods
     ```
 
@@ -213,7 +216,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 클러스터 노드 간 Pod 분포를 검토합니다.
 
-    ```
+    ```sh
     kubectl get pod -o=custom-columns=NODE:.spec.nodeName,POD:.metadata.name
     ```
 
@@ -221,12 +224,11 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 배포를 삭제합니다.
 
-    ```
+    ```sh
     kubectl delete deployment nginx-deployment
     ```
 
 1. **Cloud Shell** 창을 닫습니다.
-
 
 #### 리소스 정리
 
@@ -246,12 +248,12 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
    az group list --query "[?starts_with(name,'az104-09c')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
    ```
 
-    >**참고**: 명령은 비동기적으로 실행되므로 (-nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
+    >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
-#### 검토
+#### 복습
 
-이 랩에서는 다음을 다루었습니다.
+이 랩에서는 다음을 수행했습니다.
 
-- Azure Kubernetes Service 클러스터 배포
-- Pod를 Azure Kubernetes Service 클러스터에 배포
-- Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드를 스케일링
++ Azure Kubernetes Service 클러스터 배포
++ Pod를 Azure Kubernetes Service 클러스터에 배포
++ Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드를 스케일링

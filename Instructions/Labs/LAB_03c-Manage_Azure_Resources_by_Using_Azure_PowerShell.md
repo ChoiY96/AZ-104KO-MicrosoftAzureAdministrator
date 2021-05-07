@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '03c - Azure PowerShell을 사용하여 Azure 리소스 관리'
     module: '모듈 03 - Azure 관리'
@@ -41,11 +41,11 @@ lab:
 
 #### 작업 2: Azure PowerShell을 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 
-이 작업에서는  Cloud Shell 내에 있는 Azure PowerShell 세션을 사용하여 리소스 그룹 및 Azure 관리 디스크를 만듭니다.
+이 작업에서는 Cloud Shell 내에 있는 Azure PowerShell 세션을 사용하여 리소스 그룹 및 Azure 관리 디스크를 만듭니다.
 
 1. Cloud Shell 내의 PowerShell 세션에서 이전 랩에서 만든 **az104-03b-rg1** 리소스 그룹과 동일한 Azure 지역에 있는 리소스 그룹을 만들려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    $location = (Get-AzResourceGroup -Name az104-03b-rg1).Location
 
    $rgName = 'az104-03c-rg1'
@@ -54,12 +54,12 @@ lab:
    ```
 1. 새로 만든 리소스 그룹의 속성을 검색하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    Get-AzResourceGroup -Name $rgName
    ```
 1. 본 모듈의 이전 랩에서 만든 것과 동일한 특성을 가진 새 관리 디스크를 만들려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    $diskConfig = New-AzDiskConfig `
     -Location $location `
     -CreateOption Empty `
@@ -76,7 +76,7 @@ lab:
 
 1. 새로 만든 디스크의 속성을 검색하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    Get-AzDisk -ResourceGroupName $rgName -Name $diskName
    ```
 
@@ -84,33 +84,33 @@ lab:
 
 본 작업에서는 Cloud Shell 내에서 Azure PowerShell 세션을 사용하여 Azure 관리 디스크의 구성을 관리합니다. 
 
-1. Cloud Shell 내의 PowerShell 세션에서 Azure 관리 디스크의 크기를 **64GB**로 늘리려면 다음 명령을 실행합니다.
+1. Cloud Shell 내의 PowerShell 세션에서 Azure 관리 디스크의 크기를 **64 GB**로 늘리려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    New-AzDiskUpdateConfig -DiskSizeGB 64 | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
    ```
 
 1. 변경이 적용되었는지 확인하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    Get-AzDisk -ResourceGroupName $rgName -Name $diskName
    ```
 
 1. 현재 SKU(**Standard_LRS**)를 확인하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    (Get-AzDisk -ResourceGroupName $rgName -Name $diskName).Sku
    ```
 
-1. Cloud Shell 내의 PowerShell 세션에서 디스크 성능 SKU를 **Premium_LRS**로 변경하려면 다음 명령을 실행합니다.
+1. Cloud Shell 내의 PowerShell 세션에서 디스크 성능 SKU를 **Premium_LRS** 로 변경하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    New-AzDiskUpdateConfig -Sku Premium_LRS | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
    ```
 
 1. 변경이 적용되었는지 확인하려면 다음 명령을 실행합니다.
 
-   ```pwsh
+   ```powershell
    (Get-AzDisk -ResourceGroupName $rgName -Name $diskName).Sku
    ```
 
@@ -118,9 +118,9 @@ lab:
 
    >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 참조해야 합니다.
 
-#### 검토
+#### 복습
 
-이 랩에서는 다음을 다루었습니다.
+이 랩에서는 다음을 수행했습니다.
 
 - Azure Cloud Shell에서 PowerShell 세션을 시작하기
 - Azure PowerShell을 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
