@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '01 - Azure Active Directory ID 관리'
     module: '모듈 01 - ID'
@@ -200,7 +200,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 
 1. **검토 + 만들기** 를 클릭하고 **만들기**를 클릭합니다.
 
-1. **새 디렉터리로 이동하려면 여기를 클릭**을 사용하여 새로 만든 Azure AD 테넌트의 블레이드를 표시** **Azure Portal 도구 모음의 **Contoso 랩** 링크 또는 **디렉터리 + 구독** 단추(Cloud Shell 단추의 바로 오른쪽).
+1. **새 디렉터리로 이동하려면 여기를 클릭**을 사용하여 새로 만든 Azure AD 테넌트의 블레이드를 표시 Azure Portal 도구 모음의 **Contoso 랩** 링크 또는 **디렉터리 + 구독** 단추(Cloud Shell 단추의 바로 오른쪽).
 
 #### 작업 4: Azure AD 게스트 사용자 관리.
 
