@@ -9,15 +9,17 @@
           "description": "Virtual machine size"
         }
       },
-      "nameSuffix": {
-        "type": "string",
-        "allowedValues": [
-          "2",
-          "3"
-        ],
-        "metadata": {
-          "description": "Naming suffix"
-        }
+      "location1": {
+          "type": "string",
+          "metadata": {
+              "description": "First Azure Region" 
+          }
+      },
+      "location2": {
+          "type": "string",
+          "metadata": {
+              "description": "Second Azure Region" 
+          }
       },
       "adminUsername": {
         "type": "string",
@@ -33,30 +35,32 @@
       }
     },
   "variables": {
-    "vmName": "[concat('az104-06-vm',parameters('nameSuffix'))]",
-    "vmExtensionName": "customScriptExtension",
-    "nicName": "[concat('az104-06-nic',parameters('nameSuffix'))]",
-    "virtualNetworkName": "[concat('az104-06-vnet',parameters('nameSuffix'))]",
-    "nsgName": "[concat('az104-06-nsg',parameters('nameSuffix'))]",
-    "vnetIpPrefix": "[concat('10.6',parameters('nameSuffix'),'.0.0/22')]", 
-    "subnetIpPrefix": "[concat('10.6',parameters('nameSuffix'),'.0.0/24')]", 
+    "locationNames": "[createArray(parameters('location1'),parameters('location1'),parameters('location2'))]",       
+    "vmName": "az104-05-vm",
+    "nicName": "az104-05-nic",
     "subnetName": "subnet0",
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "computeApiVersion": "2018-10-01",
-    "networkApiVersion": "2018-12-01"
+    "VnetName": "az104-05-vnet",
+    "pipName": "az104-05-pip",
+    "nsgName": "az104-05-nsg",
+    "computeApiVersion": "2018-06-01",
+    "networkApiVersion": "2018-08-01"
   },
     "resources": [
         {
-            "name": "[variables('vmName')]",
+            "name": "[concat(variables('vmName'),copyIndex())]",
+            "copy": {
+                "name": "VMcopy",
+                "count": "[length(variables('locationNames'))]"
+            },
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "[variables('computeApiVersion')]",
-            "location": "[resourceGroup().location]",
+            "location": "[variables('locationNames')[copyIndex()]]",
             "dependsOn": [
-                "[variables('nicName')]"
+                "[concat(variables('nicName'),copyIndex())]"
             ],
             "properties": {
                 "osProfile": {
-                    "computerName": "[variables('vmName')]",
+                    "computerName": "[concat(variables('vmName'),copyIndex())]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
@@ -84,61 +88,52 @@
                             "properties": {
                                 "primary": true
                             },
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('nicName'),copyIndex()))]"
                         }
                     ]
                 }
             }
         },
         {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'), '/', variables('vmExtensionName'))]",
-            "apiVersion": "[variables('computeApiVersion')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Compute",
-                "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.7",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "commandToExecute": "powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)"
-              }
-            }
-        },
-        {
             "type": "Microsoft.Network/virtualNetworks",
-            "name": "[variables('virtualNetworkName')]",
+            "name": "[concat(variables('VnetName'),copyIndex())]",
+            "copy": {
+                "name": "VNetCopy",
+                "count": "[length(variables('locationNames'))]"
+            },
             "apiVersion": "[variables('networkApiVersion')]",
-            "location": "[resourceGroup().location]",
+            "location": "[variables('locationNames')[copyIndex()]]",
             "comments": "Virtual Network",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[variables('vnetIpPrefix')]"
+                        "[concat('10.5',copyIndex(),'.0.0/22')]"
                     ]
                 },
                 "subnets": [
                     {
                         "name": "[variables('subnetName')]",
                         "properties": {
-                            "addressPrefix": "[variables('subnetIpPrefix')]"
+                            "addressPrefix": "[concat('10.5',copyIndex(),'.0.0/24')]"
                         }
                     }
                 ]
             }
         },
         {
-            "name": "[variables('nicName')]",
+            "name": "[concat(variables('nicName'),copyIndex())]",
+            "copy": {
+                "name": "nicCopy",
+                "count": "[length(variables('locationNames'))]"
+            },
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "[variables('networkApiVersion')]",
-            "location": "[resourceGroup().location]",
+            "location": "[variables('locationNames')[copyIndex()]]",
             "comments": "Primary NIC",
             "dependsOn": [
-                "[variables('nsgName')]",
-                "[variables('virtualNetworkName')]"
+                "[concat(variables('pipName'),copyIndex())]",
+                "[concat(variables('nsgName'),copyIndex())]",
+                "[concat(variables('VnetName'),copyIndex())]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -146,22 +141,43 @@
                         "name": "ipconfig1",
                         "properties": {
                             "subnet": {
-                                "id": "[variables('subnetRef')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', concat(variables('VnetName'),copyIndex()), variables('subnetName'))]"
                             },
-                            "privateIPAllocationMethod": "Dynamic"
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIpAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', concat(variables('pipName'),copyIndex()))]"
+                            }
                         }
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat(variables('nsgName'),copyIndex()))]"
                 }
             }
         },
         {
-            "name": "[variables('nsgName')]",
+            "name": "[concat(variables('pipName'),copyIndex())]",
+            "copy": {
+                "name": "pipCopy",
+                "count": "[length(variables('locationNames'))]"
+            },
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "[variables('networkApiVersion')]",
+            "location": "[variables('locationNames')[copyIndex()]]",
+            "comments": "Public IP for Primary NIC",
+            "properties": {
+                "publicIpAllocationMethod": "Dynamic"
+            }
+        },
+        {
+            "name": "[concat(variables('nsgName'),copyIndex())]",
+            "copy": {
+                "name": "nsgCopy",
+                "count": "[length(variables('locationNames'))]"
+            },
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "[variables('networkApiVersion')]",
-            "location": "[resourceGroup().location]",
+            "location": "[variables('locationNames')[copyIndex()]]",
             "comments": "Network Security Group (NSG) for Primary NIC",
             "properties": {
                 "securityRules": [
@@ -172,19 +188,6 @@
                             "sourceAddressPrefix": "*",
                             "protocol": "Tcp",
                             "destinationPortRange": "3389",
-                            "access": "Allow",
-                            "direction": "Inbound",
-                            "sourcePortRange": "*",
-                            "destinationAddressPrefix": "*"
-                        }
-                    },
-                    {
-                        "name": "default-allow-http",
-                        "properties": {
-                            "priority": 1100,
-                            "sourceAddressPrefix": "*",
-                            "protocol": "Tcp",
-                            "destinationPortRange": "80",
                             "access": "Allow",
                             "direction": "Inbound",
                             "sourcePortRange": "*",
