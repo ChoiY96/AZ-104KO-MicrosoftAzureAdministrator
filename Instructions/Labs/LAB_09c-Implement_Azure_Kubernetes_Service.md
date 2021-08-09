@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '09c - Azure Kubernetes Service 구현'
     module: '모듈 09 - 서버리스 컴퓨팅'
@@ -21,6 +21,10 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 + 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
 ## 예상 시간: 40분
+
+## 아키텍처 다이어그램
+
+![이미지](../media/lab09c.png)
 
 ## 지침
 

@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '03c - Azure PowerShell을 사용하여 Azure 리소스 관리'
     module: '모듈 03 - Azure 관리'
@@ -20,6 +20,10 @@ lab:
 + 작업 3: Azure PowerShell을 사용하여 관리 디스크 구성
 
 ## 예상 시간: 20분
+
+## 아키텍처 다이어그램
+
+![이미지](../media/lab03c.png)
 
 ## 지침
 

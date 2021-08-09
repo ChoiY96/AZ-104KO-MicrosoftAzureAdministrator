@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '01 - Azure Active Directory ID 관리'
     module: '모듈 01 - ID'
@@ -22,6 +22,9 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 + 작업 4: Azure AD 게스트 사용자 관리 
 
 ## 예상 시간: 30분
+
+## 아키텍처 다이어그램
+![이미지](../media/lab01.png)
 
 ## 지침
 
