@@ -22,6 +22,10 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 ## 예상 시간: 40분
 
+## 아키텍처 다이어그램
+
+![이미지](../media/lab09c.png)
+
 ## 지침
 
 ### 연습 1:
