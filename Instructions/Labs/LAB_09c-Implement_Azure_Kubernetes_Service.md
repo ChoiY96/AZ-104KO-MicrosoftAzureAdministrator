@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: '09c - Azure Kubernetes Service 구현'
     module: '모듈 09 - 서버리스 컴퓨팅'
