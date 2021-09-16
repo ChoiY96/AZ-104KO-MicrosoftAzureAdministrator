@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '03b - ARM 템플릿을 사용하여 Azure 리소스 관리'
     module: '모듈 03 - Azure 관리'
@@ -75,9 +75,6 @@ lab:
        "type": "String"
    },
    "sourceUri": {
-       "type": "String"
-   },
-   "sourceImageVersionId": {
        "type": "String"
    },
    "osType": {
