@@ -77,9 +77,6 @@ lab:
    "sourceUri": {
        "type": "String"
    },
-   "sourceImageVersionId": {
-       "type": "String"
-   },
    "osType": {
        "type": "String"
    },

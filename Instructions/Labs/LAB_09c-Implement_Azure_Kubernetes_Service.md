@@ -66,6 +66,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | 리소스 그룹 | 새 리소스 그룹 **az104-09c-rg1** 의 이름 |
     | Kubernetes 클러스터 이름 | **az104-9c-aks1** |
     | 지역 | Kubernetes 클러스터를 프로비전할 수 있는 지역의 이름 |
+    | 가용성 영역 | **없음** (모든 상자 선택 취소) |
     | Kubernetes 버전 | 기본값 수락 |
     | 노드 크기 | 기본값 수락 |
     | 노드 수 | **1** |
