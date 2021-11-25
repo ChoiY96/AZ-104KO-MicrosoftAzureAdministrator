@@ -34,7 +34,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 
 이 작업에서는 Azure AD 사용자를 만들고 구성합니다.
 
->**참고**: 이전에 이 Azure AD 테넌트에서 Azure AD Premium용 평가판 라이선스를 사용했다면 새 Azure AD 테넌트를 만들거나, 새 Azure AD 테넌트에서 작업 3->작업 2를 차례로 수행해야 합니다.
+>**참고**: 이전에 이 Azure AD 테넌트에서 Azure AD Premium용 평가판 라이선스를 사용했다면 새 Azure AD 테넌트를 만들고 새 Azure AD 테넌트에서 작업 3->작업 2를 차례로 수행해야 합니다.
 
 1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
 
