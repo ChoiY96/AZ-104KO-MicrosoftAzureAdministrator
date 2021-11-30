@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '07 - Azure Storage 관리'
     module: '모듈 07 - Azure Storage'
@@ -50,12 +50,15 @@ lab:
 1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
 
     >**참고**: Azure 지역 이름의 목록을 표시하려면 `(Get-AzLocation).Location`을 실행합니다.
+    >**참고**: 아래의 각 명령을 따로 입력해야 합니다.
 
    ```powershell
    $location = '[Azure_region]'
-
+  
+  ```powershell
    $rgName = 'az104-07-rg0'
-
+ 
+ ```powershell
    New-AzResourceGroup -Name $rgName -Location $location
    ```
 1. Cloud Shell 창에서 다음을 실행하여 업로드된 템플릿 및 매개 변수 파일을 사용해 가상 머신을 배포합니다.
@@ -205,9 +208,9 @@ lab:
     | --- | --- |
     | 역할 | **Storage Blob 데이터 owner** |
     | 액세스 권한 할당 대상 | **사용자, 그룹 또는 서비스 주체** |
-    | 사용자 계정의 | 이름을 선택합니다. |
+    | 구성원 | 사용자 계정의 이름 |
 
-1. 변경 사항을 저장하고 **az104-07-container** 컨테이너의 **개요** 블레이드로 돌아가 인증 방법을 변경할 수 있는지 확인합니다(Azure AD 사용자 계정으로 전환).
+1. '검토+할당' 및 '검토+ 할당'을 차례로 클릭하고 **az104-07-container** 컨테이너의 **개요** 블레이드로 돌아가 인증 방법을 변경할 수 있는지 확인합니다(Azure AD 사용자 계정으로 전환).
 
     > **참고**: 이 변경 사항이 적용되는 데 5분 정도 소요될 수 있습니다.
 
