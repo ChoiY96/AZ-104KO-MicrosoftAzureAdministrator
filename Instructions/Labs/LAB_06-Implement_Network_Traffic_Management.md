@@ -54,10 +54,10 @@ lab:
    ```powershell (execute one command at a time)
    $location = '[Azure_region]'
 
-```powershell (execute one command at a time)
+   ```powershell (execute one command at a time)
    $rgName = 'az104-06-rg1'
 
-```powershell (execute one command at a time)
+   ```powershell (execute one command at a time)
    New-AzResourceGroup -Name $rgName -Location $location
    ```
 

@@ -55,10 +55,10 @@ lab:
    ```powershell
    $location = '[Azure_region]'
   
-  ```powershell
+   ```powershell
    $rgName = 'az104-07-rg0'
  
- ```powershell
+   ```powershell
    New-AzResourceGroup -Name $rgName -Location $location
    ```
 1. Cloud Shell 창에서 다음을 실행하여 업로드된 템플릿 및 매개 변수 파일을 사용해 가상 머신을 배포합니다.
