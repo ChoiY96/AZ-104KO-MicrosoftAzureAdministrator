@@ -51,11 +51,13 @@ lab:
 
 1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 첫 번째 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자는 Azure 가상 머신을 배포할 Azure 지역 이름으로 바꿈). "(Get-AzLocation).Location" cmdlet을 사용하면 지역 목록을 확인할 수 있습니다.
 
-   ```powershell
+   ```powershell (execute one command at a time)
    $location = '[Azure_region]'
 
+   ```powershell (execute one command at a time)
    $rgName = 'az104-06-rg1'
 
+   ```powershell (execute one command at a time)
    New-AzResourceGroup -Name $rgName -Location $location
    ```
 
@@ -394,7 +396,7 @@ lab:
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | 새 리소스 그룹 **az104-06-rg4**의 이름 |
+    | 리소스 그룹 | 새 리소스 그룹 **az104-06-rg1**의 이름 |
     | 이름 | **az104-06-lb4** |
     | 지역| 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
     | 유형 | **공용** |
@@ -461,7 +463,7 @@ lab:
 
 1. **추가**를 클릭합니다.
 
-1. 부하 분산 규칙이 만들어질 때까지 기다린 다음, **개요**를 클릭하고 **공용 IP 주소**의 값을 기록합니다.
+1. 부하 분산 규칙이 만들어질 때까지 기다린 다음, **설정** 섹션에서 **프런트 엔드 IP 구성**을 클릭하고 **공용 IP 주소**의 값을 기록합니다.
 
 1. 다른 브라우저 창을 시작하고 이전 단계에서 식별한 IP 주소로 이동합니다.
 
@@ -499,7 +501,7 @@ lab:
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | 새 리소스 그룹 **az104-06-rg5**의 이름 |
+    | 리소스 그룹 | 새 리소스 그룹 **az104-06-rg1**의 이름 |
     | 애플리케이션 게이트웨이 이름 | **az104-06-appgw5** |
     | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
     | 계층 | **표준 V2** |
