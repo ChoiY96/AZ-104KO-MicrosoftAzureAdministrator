@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '07 - Azure Storage 관리'
     module: '모듈 07 - Azure Storage'
@@ -47,20 +47,23 @@ lab:
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭한 다음, 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\07\\az104-07-vm-template.json** 및 **\\Allfiles\\Labs\\07\\az104-07-vm-parameters.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
+1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다('[Azure_region]' 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
 
     >**참고**: Azure 지역 이름의 목록을 표시하려면 `(Get-AzLocation).Location`을 실행합니다.
     >**참고**: 아래의 각 명령을 따로 입력해야 합니다.
 
-   ```powershell
-   $location = '[Azure_region]'
+    ```powershell
+    $location = '[Azure_region]'
+    ```
   
-   ```powershell
-   $rgName = 'az104-07-rg0'
- 
-   ```powershell
-   New-AzResourceGroup -Name $rgName -Location $location
-   ```
+    ```powershell
+     $rgName = 'az104-07-rg0'
+    ```
+
+    ```powershell
+    New-AzResourceGroup -Name $rgName -Location $location
+    ```
+    
 1. Cloud Shell 창에서 다음을 실행하여 업로드된 템플릿 및 매개 변수 파일을 사용해 가상 머신을 배포합니다.
 
    ```powershell
