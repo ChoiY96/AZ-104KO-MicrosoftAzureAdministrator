@@ -49,17 +49,19 @@ lab:
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭하여 **\\Allfiles\\Labs\\06\\az104-06-vms-loop-template.json** 및 **\\Allfiles\\Labs\\06\\az104-06-vms-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 첫 번째 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자는 Azure 가상 머신을 배포할 Azure 지역 이름으로 바꿈). "(Get-AzLocation).Location" cmdlet을 사용하면 지역 목록을 확인할 수 있습니다.
+1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 첫 번째 리소스 그룹을 만듭니다('[Azure_region]' 자리 표시자는 Azure 가상 머신을 배포할 Azure 지역 이름으로 바꿈). "(Get-AzLocation).Location" cmdlet을 사용하면 지역 목록을 확인할 수 있습니다.
 
-   ```powershell (execute one command at a time)
-   $location = '[Azure_region]'
+    ```powershell (execute one command at a time)
+    $location = '[Azure_region]'
+    ```
 
-   ```powershell (execute one command at a time)
-   $rgName = 'az104-06-rg1'
+    ```powershell (execute one command at a time)
+    $rgName = 'az104-06-rg1'
+    ```
 
-   ```powershell (execute one command at a time)
-   New-AzResourceGroup -Name $rgName -Location $location
-   ```
+    ```powershell (execute one command at a time)
+    New-AzResourceGroup -Name $rgName -Location $location
+    ```
 
 1. Cloud Shell 창에서 가상 네트워크를 세 개를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 Azure VM 네 개를 배포합니다.
 
