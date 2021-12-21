@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: '09a - Web Apps 구현'
     module: '모듈 09 - 서버리스 컴퓨팅'
@@ -204,6 +204,8 @@ lab:
     | 인스턴스 한도 기본 | **1** |
 
 1. **저장**을 클릭합니다.
+
+    >**참고**: 'microsoft.insights' 리소스 공급자가 등록되지 않았다는 오류가 나타나면 Cloudshell에서 `az provider register --namespace 'Microsoft.Insights'`를 실행하고 자동 크기 조정 규칙을 다시 저장해 보세요.
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
