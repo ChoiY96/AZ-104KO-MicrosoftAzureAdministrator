@@ -16,11 +16,12 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 이 랩에서는 다음 작업을 수행합니다.
 
 + 작업 1: 랩 환경 프로비전
-+ 작업 2: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
-+ 작업 3: Azure 가상 머신의 기본 모니터링 설정 검토
-+ 작업 4: Azure 가상 머신 진단 설정 구성
-+ 작업 5: Azure Monitor 기능 검토
-+ 작업 6: Azure Log Analytics 기능 검토
++ 작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자 등록
++ 작업 3: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
++ 작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
++ 작업 5: Azure 가상 머신 진단 설정 구성
++ 작업 6: Azure Monitor 기능 검토
++ 작업 7: Azure Log Analytics 기능 검토
 
 ## 예상 시간: 45분
 

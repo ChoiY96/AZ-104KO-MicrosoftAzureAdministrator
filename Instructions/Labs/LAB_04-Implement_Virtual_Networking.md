@@ -111,6 +111,13 @@ Azure 가상 네트워킹 기능을 탐색해야 합니다. 우선, Azure에서 
 
     >**참고**: 다음 작업으로 진행하기 전에 배포가 완료될 때까지 기다립니다. 약 2분이 소요됩니다.
 
+    >**참고**: 해당 지역에서 VM 크기를 사용할 수 없다는 오류가 나타나면 다음 단계를 진행하세요.
+    > 1. CloudShell에서 `{}` 단추를 클릭하고, 왼쪽 사이드 바에서 **az104-04-vms-loop-parameters.json**을 선택하고, `vmSize` 매개 변수 값을 메모합니다.
+    > 1. 'az104-04-rg1' 리소스 그룹이 배포되는 위치를 확인합니다. CloudShell에서 `az group show -n az104-04-rg1 --query location`를 실행하여 확인할 수 있습니다.
+    > 1. CloudShell에서 `az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name"`을 실행합니다.
+    > 1. `vmSize` 매개 변수의 값을 방금 실행한 명령에서 반환된 값 중 하나로 바꿉니다.
+    > 1. 이제 `New-AzResourceGroupDeployment` 명령을 다시 실행하여 템플릿을 재배포합니다. 위로 단추를 몇 번 눌러서 마지막으로 실행한 명령을 가져올 수 있습니다.
+
 1. Cloud Shell 창을 닫습니다.
 
 #### 작업 3: Azure VM의 프라이빗 및 공용 IP 주소 구성

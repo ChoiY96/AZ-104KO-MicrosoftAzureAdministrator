@@ -51,17 +51,18 @@ lab:
 
 1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 첫 번째 리소스 그룹을 만듭니다('[Azure_region]' 자리 표시자는 Azure 가상 머신을 배포할 Azure 지역 이름으로 바꿈). "(Get-AzLocation).Location" cmdlet을 사용하면 지역 목록을 확인할 수 있습니다.
 
-    ```powershell (execute one command at a time)
+    ```powershell 
     $location = '[Azure_region]'
     ```
-
-    ```powershell (execute one command at a time)
+    이번에는 리소스 그룹 이름을 입력합니다.
+    ```powershell
     $rgName = 'az104-06-rg1'
     ```
-
-    ```powershell (execute one command at a time)
+    그리고 마지막으로 원하는 위치에 리소스 그룹을 만듭니다.
+    ```powershell
     New-AzResourceGroup -Name $rgName -Location $location
     ```
+
 
 1. Cloud Shell 창에서 가상 네트워크를 세 개를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 Azure VM 네 개를 배포합니다.
 
