@@ -108,13 +108,12 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | 리소스 그룹 | **az104-11-rg1** |
     | 위치 | [작업 영역 매핑 설명서](https://docs.microsoft.com/ko-kr/azure/automation/how-to/region-mappings)에 따라 결정된 Azure 지역의 이름 |
-    | Azure 실행 계정 만들기 | **예** |
 
     >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/ko-kr/azure/automation/how-to/region-mappings)를 기반으로 Azure 지역을 지정해야 합니다.
 
     >**참고**: 배포가 완료될 때까지 기다립니다. 배포에는 약 3분이 소요될 수 있습니다.
 
-1. **자동화 계정 만들기** 블레이드에서 **새로 고침**을 클릭한 다음 새로 만든 자동화 계정을 나타내는 항목을 클릭합니다.
+1. **리소스로 이동**을 클릭합니다.
 
 1. 자동화 계정 블레이드의 **구성 관리** 섹션에서 **인벤토리**를 클릭합니다.
 
