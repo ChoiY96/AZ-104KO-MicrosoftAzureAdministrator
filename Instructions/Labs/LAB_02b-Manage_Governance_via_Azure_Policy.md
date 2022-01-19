@@ -49,7 +49,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
    df
    ```
 
-1. 명령의 출력에 Cloud Shell 홈 드라이브 탑재를 지정하는 정규화된 경로의 첫 번째 부분을 기록합니다.(다음과 같이 표시됩니다. `xxxxxxxxxxxxxxxxxx`:
+1. 명령의 출력에 Cloud Shell 홈 드라이브 탑재를 지정하는 정규화된 경로의 첫 번째 부분을 기록합니다.(다음과 같이 표시됩니다. `xxxxxxxxxxxxxx`:
 
    ```
    //xxxxxxxxxxxxxx.file.core.windows.net/cloudshell   (..)  /usr/csuser/clouddrive
