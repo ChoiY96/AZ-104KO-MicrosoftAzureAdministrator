@@ -47,3 +47,5 @@ At this time, we are not accepting external contributions to this repo. If you h
 ### 강의 자료
 
 MCT 와 파트너는 이러한 자료에 액세스하여 학생에게 별도로 제공하는 것이 좋습니다. 진행 중인 수업의 일부로 학생들에게 직접 GitHub에서 랩 단계에 액세스하도록 할 경우, 과정의 일부로 다른 UI 에 액세스해야 하므로 학생들이 혼란스러워할 수 있습니다. 학생에게 별도의 랩 지침을 받는 이유를 설명함으로써 항상 변화하는 클라우드 기반 인터페이스 및 플랫폼의 특성을 강조할 수 있습니다. GitHub의 파일에 액세스하기 위한 Microsoft 학습 지원 및 GitHub 사이트 탐색 지원은 이 과정을 가르치는 MCT로 제한됩니다.
+
+go to do the job
